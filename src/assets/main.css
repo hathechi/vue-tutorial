@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*Layout*/
+.header {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(85, 172, 234);
+}
+
+.footer {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(85, 172, 234);
+}
+
+/* Home Page */
+
+.container {
+  max-width: 80vw;
+  margin: 0 auto;
+}
+
+.body-list-product {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*Item Product*/
+.item-product {
+  width: 20%;
+  margin: 12px;
+}
+
+.div-img {
+  height: 20vh;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.title {
+  padding: 12px 0;
+}
+
+/*List Image*/
+.scroll-list-img {
+  overflow-y: auto;
+}
+
+.div-arr-img {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 60px;
+  width: 60px;
+}
+
+.small-img-list {
+  display: inline-flex;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 8px 4px;
+  border: 0.5px solid gray;
+  border-radius: 4px;
+}
