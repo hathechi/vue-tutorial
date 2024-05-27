@@ -19,9 +19,7 @@
 </template>
 <script setup lang="ts">
 import type { ProductType } from '@/types/Product'
+import formatPrice from '@/utils/formatMoney'
 
-function formatPrice(amount: number): string {
-  return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount)
-}
 defineProps<{ data: ProductType; handleRemoveCart: (index: number) => void; index: number }>()
 </script>
