@@ -1,6 +1,6 @@
 <template>
   <div>
-    <draggable class="dragArea" tag="ul" :list="list" :group="{ name: 'g1' }">
+    <draggable class="dragArea" tag="ul" :list="list"  group="g1">
       <li v-for="el in list" :key="el.name">
         <p>{{ el.name }}</p>
       </li>
@@ -12,6 +12,6 @@
 import { VueDraggableNext as Draggable } from 'vue-draggable-next'
 
 defineProps<{
-  list: any
+  list: string[]
 }>()
 </script>
