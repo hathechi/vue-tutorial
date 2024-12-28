@@ -1,17 +1,22 @@
 <template>
-  <div class="row position-relative">
-    <div class="col-2">
-      <div class="h-100">
-        <img class="img" :src="data.image" alt="Image" />
+  <div class=" flex my-2 w-full ">
+    <div class="w-1/5">
+      <div class="h-full">
+        <img class="h-[80px] w-[80px] object-cover rounded" :src="data.image" alt="Image" />
       </div>
     </div>
+<<<<<<< HEAD
     <div class="col-10 item">
       <div class="h-100">
+=======
+    <div class="w-4/5 flex justify-between">
+      <div class="h-100 h-full">
+>>>>>>> 85968a66965bb8f95d3849228e0a31cc94ab8882
         <h6 class="">{{ data.name }}</h6>
         <h6>{{ formatPrice(data.price) }}</h6>
       </div>
-      <div class="position-absolute top-0 end-0">
-        <button @click="handleRemoveCart(index)" class="btn border">Xóa</button>
+      <div class="">
+        <button @click="handleRemoveCart(index)" class="border rounded py-2 px-3 bg-black text-white hover:bg-gray-700">Xóa</button>
       </div>
     </div>
   </div>
@@ -19,9 +24,7 @@
 </template>
 <script setup lang="ts">
 import type { ProductType } from '@/types/Product'
+import formatPrice from '@/utils/formatMoney'
 
-function formatPrice(amount: number): string {
-  return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount)
-}
 defineProps<{ data: ProductType; handleRemoveCart: (index: number) => void; index: number }>()
 </script>

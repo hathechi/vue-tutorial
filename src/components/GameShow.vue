@@ -1,6 +1,8 @@
 <template>
-  <canvas ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
-  <button @click="startSpin(props.duration)">Quay</button>
+  <div>
+    <canvas ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
+    <button @click="startSpin(props.duration)">Quay</button>
+  </div>
 </template>
 
 <script setup lang="ts">

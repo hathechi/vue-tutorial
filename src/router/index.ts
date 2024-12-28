@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import GamePage from '../views/GamePage.vue'
 import DefaultLayout from '../views/layouts/DefaultLayout.vue'
+import DraggablePage from '../views/DraggablePage.vue'
 const routers = [
   {
     path: '/',
@@ -16,6 +17,10 @@ const routers = [
         path: '/game',
         name: 'game',
         component: GamePage
+      } ,{
+        path: '/drag',
+        name: 'drag',
+        component: DraggablePage
       }
     ]
   }
