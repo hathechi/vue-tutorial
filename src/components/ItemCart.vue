@@ -5,18 +5,14 @@
         <img class="h-[80px] w-[80px] object-cover rounded" :src="data.image" alt="Image" />
       </div>
     </div>
-<<<<<<< HEAD
-    <div class="col-10 item">
-      <div class="h-100">
-=======
     <div class="w-4/5 flex justify-between">
       <div class="h-100 h-full">
->>>>>>> 85968a66965bb8f95d3849228e0a31cc94ab8882
         <h6 class="">{{ data.name }}</h6>
         <h6>{{ formatPrice(data.price) }}</h6>
       </div>
       <div class="">
-        <button @click="handleRemoveCart(index)" class="border rounded py-2 px-3 bg-black text-white hover:bg-gray-700">Xóa</button>
+        <button @click="handleRemoveCart(index)"
+          class="border rounded py-2 px-3 bg-black text-white hover:bg-gray-700">Xóa</button>
       </div>
     </div>
   </div>

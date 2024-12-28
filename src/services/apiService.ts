@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_BASE_URL = 'https://ric.loidirieng.com/graphql'
+const API_BASE_URL = 'https://ric.zone/graphql'
 const instance = axios.create({
   baseURL: API_BASE_URL,
   headers: {
