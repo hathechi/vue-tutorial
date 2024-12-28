@@ -8,23 +8,12 @@
       </RouterLink>
       <br />
       <div class="search">
-        <input
-          type="search"
-          v-model="inputSearch"
-          @input="searchProduct"
-          class="custom-input"
-          placeholder="Tìm kiếm"
-        />
+        <input type="search" v-model="inputSearch" @input="searchProduct" class="custom-input" placeholder="Tìm kiếm" />
       </div>
       <div class="row">
         <div class="col-8">
           <div class="body-list-product">
-            <ItemProduct
-              v-for="item in dataProducts"
-              :key="item._id"
-              :data="item"
-              :handerAddCart="handerAddCart"
-            >
+            <ItemProduct v-for="item in dataProducts" :key="item._id" :data="item" :handerAddCart="handerAddCart">
               <template v-slot:list-img>
                 <ListImage :images="item.listMedias" />
               </template>
@@ -39,14 +28,9 @@
             <h4>Tổng tiền:</h4>
             <h4 class="text-danger">{{ formatPrice(toTalPriceCart) }}</h4>
           </div>
-          <draggable v-model="listCart">
-            <ItemCart
-              v-for="(itemCart, index) in listCart"
-              :data="itemCart"
-              :index="index"
-              :key="index"
-              :handleRemoveCart="handleRemoveCart"
-            />
+          <draggable :list="listCart">
+            <ItemCart v-for="(itemCart, index) in listCart" :data="itemCart" :index="index" :key="index"
+              :handleRemoveCart="handleRemoveCart" />
           </draggable>
         </div>
       </div>
@@ -63,6 +47,49 @@ import type { ProductType } from '@/types/Product'
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import pullAt from 'lodash/pullAt'
 import { VueDraggableNext } from 'vue-draggable-next'
+import axios from 'axios'
+
+
+import CryptoJS from 'crypto-js';
+import moment from 'moment'; // npm install moment
+
+// APP INFO
+const config = {
+  app_id: 2554,
+  key1: "sdngKKJmqEMzvh5QQcdD2A9XBSKUNaYn",
+
+  endpoint: "https://sb-openapi.zalopay.vn/v2/create"
+};
+
+const embed_data = {};
+
+const items = [{}];
+const transID = Math.floor(Math.random() * 1000000);
+const order = {
+  app_id: config.app_id,
+  app_trans_id: `${moment().format('YYMMDD')}_${transID}`,
+  app_user: "user123",
+  app_time: Date.now(), // miliseconds
+  item: JSON.stringify(items),
+  embed_data: JSON.stringify(embed_data),
+  amount: 50000,
+  description: `TEST THANH TOÁN #${transID}`,
+  bank_code: "zalopayapp",
+};
+
+// appid|app_trans_id|appuser|amount|apptime|embeddata|item
+const data = config.app_id + "|" + order.app_trans_id + "|" + order.app_user + "|" + order.amount + "|" + order.app_time + "|" + order.embed_data + "|" + order.item;
+order.mac = CryptoJS.SHA256(data, config.key1).toString();
+
+console.log("MAC=>>>>>", order)
+
+
+axios.post(config.endpoint, null, { params: order })
+  .then(res => {
+    console.log("DATAAAAAAAA", res.data);
+  })
+  .catch(err => console.log("ERRRRRRRRRRRRRRR", err));
+
 
 const dataProducts = ref<ProductType[]>([])
 let inputSearch = ref<string>('')

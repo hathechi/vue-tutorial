@@ -5,7 +5,7 @@
         <img class="img" :src="data.image" alt="Image" />
       </div>
     </div>
-    <div class="col-10">
+    <div class="col-10 item">
       <div class="h-100">
         <h6 class="">{{ data.name }}</h6>
         <h6>{{ formatPrice(data.price) }}</h6>
